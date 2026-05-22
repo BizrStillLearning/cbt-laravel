@@ -1,58 +1,125 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
+  
+  # 🚀 NextGen CBT (Computer Based Test)
+  
+  **Sistem Ujian Berbasis Komputer Modern dengan Fitur Anti-Curang & Auto-Grading Cerdas.**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+  <p align="center">
+    <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel" />
+    <img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D" alt="Vue.js" />
+    <img src="https://img.shields.io/badge/Inertia.js-9553E9?style=for-the-badge&logo=inertia&logoColor=white" alt="Inertia.js" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+  </p>
 
-## About Laravel
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📖 Tentang Aplikasi
+NextGen CBT adalah aplikasi ujian digital yang dirancang untuk memberikan pengalaman evaluasi akademik yang aman, jujur, dan efisien. Dibangun menggunakan arsitektur modern (Monolith SPA), aplikasi ini menjembatani kebutuhan Guru dalam manajemen soal yang dinamis dan kebutuhan Murid akan platform ujian yang responsif dan ketat.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Fitur Unggulan
 
-## Learning Laravel
+- 🎭 **Role-Based Access Control (RBAC):** Pemisahan *dashboard* dan fungsionalitas yang ketat antara `Guru` dan `Murid`.
+- 🧠 **Hybrid Auto-Grading System:**
+  - **Pilihan Ganda:** Dikoreksi instan oleh sistem.
+  - **Isian Singkat:** *Auto-grading* cerdas berbasis kompilasi *Keyword* (Mentolerir variasi jawaban siswa).
+  - **Essay:** Antarmuka khusus bagi Guru untuk membaca uraian siswa dan memberikan skor manual secara langsung.
+- ⏱️ **Strict Per-Question Timer:** Sistem memaksakan *Auto-Next* (1 Menit untuk PG, 2 Menit Isian, 3 Menit Essay). Siswa tidak dapat kembali ke soal sebelumnya.
+- 🛡️ **Sistem Anti-Curang (Browser Visibility):** Mendeteksi jika siswa mengecilkan jendela (*minimize*) atau membuka *tab* baru (Google). Jika pelanggaran melebihi 3 kali peringatan, ujian akan dihentikan paksa (Force Submit).
+- 📅 **Exam Scheduling:** Guru dapat mengatur status Publikasi (Draft/Published) beserta rentang waktu ujian (Start Time - End Time).
+- 📊 **One-Click Export:** Ekspor rekapitulasi nilai seluruh siswa ke format `.csv` (Excel) secara *real-time*.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Teknologi yang Digunakan
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Aplikasi ini dibangun di atas tumpukan teknologi modern untuk memastikan performa SPA (*Single Page Application*) yang mulus tanpa mengorbankan ketangguhan *backend*.
 
-## Agentic Development
+- **Backend:** Laravel (PHP)
+- **Frontend:** Vue 3 (Composition API)
+- **Routing & Data Bridge:** Inertia.js
+- **Styling UI:** Tailwind CSS
+- **Database:** MySQL
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🔄 Alur Aplikasi (User Flow)
 
-php artisan boost:install
-```
+### 👨‍🏫 Alur Guru (Pengajar)
+1. **Manajemen Ujian:** Guru membuat sesi ujian baru, mengatur estimasi waktu, dan jadwal rilis.
+2. **Bank Soal:** Guru meracik soal (PG, Isian dengan *keyword*, atau Essay) serta menentukan bobot poin per soal.
+3. **Monitoring:** Guru memantau ujian yang sedang/telah dikerjakan siswa.
+4. **Grading & Export:** Guru masuk ke panel "Rekap Nilai", mengoreksi soal Essay (jika ada), lalu mengunduh rekap nilai akhir ke dalam format Excel.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 👨‍🎓 Alur Murid (Peserta)
+1. **Dashboard:** Murid melihat daftar ujian yang sedang berstatus *Published* dan berada pada rentang waktu yang diizinkan.
+2. **Lobi Ujian:** Murid masuk ke "Ruang Tunggu" untuk membaca peraturan dan durasi sebelum *timer* benar-benar berjalan.
+3. **Pengerjaan:** Murid mengerjakan soal satu per satu (tidak bisa mundur). Sistem Anti-Curang aktif memantau aktivitas layar murid.
+4. **Selesai:** Nilai PG dan Isian langsung terakumulasi, sementara skor Essay menunggu koreksi Guru. 
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🗄️ Entity Relationship Diagram (ERD)
 
-## Code of Conduct
+Struktur relasi *database* dirancang untuk memfasilitasi integritas data ujian, soal, hingga rekam jejak jawaban siswa.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```mermaid
+erDiagram
+    USERS ||--o{ EXAM_ATTEMPTS : "melakukan"
+    EXAMS ||--o{ EXAM_ATTEMPTS : "memiliki_riwayat"
+    EXAMS ||--o{ QUESTIONS : "terdiri_dari"
+    QUESTIONS ||--o{ ANSWERS : "memiliki_kunci/opsi"
+    QUESTIONS ||--o{ STUDENT_RESPONSES : "dijawab_pada"
+    EXAM_ATTEMPTS ||--o{ STUDENT_RESPONSES : "berisi"
 
-## Security Vulnerabilities
+    USERS {
+        id bigint PK
+        name varchar
+        email varchar
+        password varchar
+        role enum "guru, murid"
+    }
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    EXAMS {
+        id bigint PK
+        title varchar
+        description text
+        duration_minutes int
+        is_published boolean
+        start_time datetime
+        end_time datetime
+    }
 
-## License
+    QUESTIONS {
+        id bigint PK
+        exam_id bigint FK
+        type enum "pilihan_ganda, isian, essay"
+        question_text text
+        points int
+    }
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    ANSWERS {
+        id bigint PK
+        question_id bigint FK
+        answer_text text
+        is_correct boolean
+    }
+
+    EXAM_ATTEMPTS {
+        id bigint PK
+        exam_id bigint FK
+        user_id bigint FK
+        total_score int
+        status enum "menunggu_koreksi, selesai"
+    }
+
+    STUDENT_RESPONSES {
+        id bigint PK
+        exam_attempt_id bigint FK
+        question_id bigint FK
+        answer_id bigint FK "nullable"
+        answer_text text "nullable"
+        score int
+    }
