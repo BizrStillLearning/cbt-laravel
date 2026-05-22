@@ -11,6 +11,7 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    role: 'murid'
 });
 
 const submit = () => {
@@ -54,6 +55,20 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="role" value="Daftar Sebagai" />
+                <select id="role" v-model="form.role" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                    <option value="guru">Guru</option>
+                    <option value="murid">Murid</option>
+                </select>
+            </div>
+
+            <div v-if="form.role === 'guru'" class="mt-4">
+                <InputLabel for="secret_code" value="Kode Rahasia Akses Guru" />
+                <TextInput id="secret_code" type="password" v-model="form.secret_code" class="mt-1 block w-full border-red-300" placeholder="Masukkan PIN Sekolah" />
+                <InputError class="mt-2" :message="form.errors.secret_code" />
             </div>
 
             <div class="mt-4">

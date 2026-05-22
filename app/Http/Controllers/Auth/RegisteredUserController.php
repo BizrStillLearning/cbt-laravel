@@ -34,19 +34,23 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', \Illuminate\Validation\Rules\Password::defaults()],
+            'role' => 'required|in:guru,murid',
+            'secret_code' => 'exclude_if:role,murid|required_if:role,guru|in:GURU2026',
+        ], [
+            'secret_code.in' => 'Kode rahasia salah! Anda tidak bisa mendaftar sebagai Guru.',
+            'secret_code.required_if' => 'Kode rahasia wajib diisi untuk mendaftar sebagai Guru.'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => \Illuminate\Support\Facades\Hash::make($request->password),
+            'role' => $request->role,
         ]);
 
-        event(new Registered($user));
-
+        event(new \Illuminate\Auth\Events\Registered($user));
         Auth::login($user);
-
         return redirect(route('dashboard', absolute: false));
     }
 }
